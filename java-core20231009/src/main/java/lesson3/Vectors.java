@@ -1,9 +1,6 @@
 package lesson3;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Имеются 2 вектора.
@@ -11,11 +8,34 @@ import java.util.List;
  * возвращает результат в виде вектора. В ответе необходимо исключить кратность при дубликации*/
 public class Vectors {
     public static List<Integer> countCommonNumbers(List<Integer> list1, List<Integer> list2) {
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        List<Integer> resultList = new ArrayList<>();
+        int resultCount = 0;
 
-        List<Integer> list = new ArrayList<>();
 
+        for (int i = 0; i < list1.size(); i++) {
+            int num1 = list1.get(i);
+            int num2 = list2.get(i);
 
-        return null;
+            if (!set1.contains(num1)) {
+                set1.add(num1);
+                if (set2.contains(num1)) {
+                    ++resultCount;
+                }
+            }
+
+            if (!set2.contains(num2)) {
+                set2.add(num2);
+                if (set1.contains(num2)) {
+                    ++resultCount;
+                }
+            }
+
+            resultList.add(resultCount);
+        }
+        return resultList;
+
     }
 
     public static void main(String[] args) {
