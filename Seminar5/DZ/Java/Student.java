@@ -47,7 +47,7 @@ public class Student {
     public List<Double> setRandomGrade() {
         Random ran = new Random();
         for (int i = 0; i < 5; i++) {
-            double x = ran.nextInt(2,6);
+            double x = ran.nextInt(1,10);
 
             gradeArray.add(x);
         }

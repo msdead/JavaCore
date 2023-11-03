@@ -11,19 +11,19 @@ public class DZ5 {
 
     static {
         students.add(new Student("Иван","Информатика" ));
-        students.add(new Student("Петр", "Физика"));
+        students.add(new Student("Петр", "Биология"));
         students.add(new Student("Дарья", "Информатика"));
         students.add(new Student("Павел", "Биология"));
         students.add(new Student("Михаил", "Информатика"));
 
-        students.add(new Student("Тимофей","Физика" ));
-        students.add(new Student("Азамат", "Физкультура"));
+        students.add(new Student("Тимофей","Биология"));
+        students.add(new Student("Азамат", "Информатика"));
         students.add(new Student("Наташа", "Биология"));
         students.add(new Student("Сергей", "Информатика"));
         students.add(new Student("Милана", "Информатика"));
 
-        students.add(new Student("Роман","Физкультура" ));
-        students.add(new Student("Екатерина", "Физика"));
+        students.add(new Student("Роман","Биология" ));
+        students.add(new Student("Екатерина", "Информатика"));
         students.add(new Student("Надежда", "Информатика"));
         students.add(new Student("Александр", "Биология"));
         students.add(new Student("Александра", "Информатика"));
@@ -41,11 +41,12 @@ public class DZ5 {
             student.setGrade(average);
         }
 
-        System.out.println(students);
+        System.out.println(students+"\n");
 
         List<Student> sortedStudent = students.stream().
                 filter(student -> student.getSpecialty() == "Информатика")
                 .sorted(Comparator.comparingDouble(Student::getGrade).reversed())
+                .takeWhile(student -> student.getGrade() > 4.5)
                 .limit(5).collect(Collectors.toList());
 
         System.out.println(sortedStudent);
